@@ -1,10 +1,15 @@
-const { fetchMyIP } = require('./iss');
+const request = require("request");
+const { calculateMac } = require("request/lib/hawk");
+const myFun = require("./iss");
+var ipAdd;
 
-fetchMyIP((error, ip) => {
+const fetchMyIP = (error, ip) => {
   if (error) {
-    console.log("It didn't work!" , error);
+    console.log("It didn't work!", error);
     return;
   }
-
-  console.log('It worked! Returned IP:' , ip);
-});
+  ipAdd = ip;
+  console.log("It worked! Returned IP:", ip);
+  myFun.fetchCoordsByIP(ipAdd);
+};
+myFun.fetchMyIP(fetchMyIP);
