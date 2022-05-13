@@ -1,7 +1,7 @@
 const request = require("request");
 const { calculateMac } = require("request/lib/hawk");
 const myFun = require("./iss");
-var ipAdd;
+const ipAdd, coords;
 
 const fetchMyIP = (error, ip) => {
   if (error) {
